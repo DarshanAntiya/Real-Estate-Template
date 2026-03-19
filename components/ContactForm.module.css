@@ -1,0 +1,114 @@
+.contactForm {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputGroup label {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #d4d0c8;
+    color: #1a1a1a;
+    padding: 10px 0;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    font-family: inherit;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #B8A27A;
+}
+
+.input::placeholder {
+    color: #bbb;
+}
+
+.submitButton {
+    width: 100%;
+    margin-top: 24px;
+    justify-content: center;
+}
+
+.errorMessage {
+    color: #ff4b4b;
+    font-size: 14px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.successMessage {
+    padding: 40px 0;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.successIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 20px;
+}
+
+.successMessage h3 {
+    color: #1a1a1a;
+    font-family: var(--font-playfair), serif;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+.successMessage p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Honeypot field (hidden from accessibility tree as well) */
+.honeypot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    .contactForm {
+        padding: 30px 20px;
+    }
+
+    .formRow {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

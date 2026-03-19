@@ -1,0 +1,116 @@
+.partnersSection {
+    padding: 60px 0;
+    background-color: #F5F0E6;
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header h2 {
+    font-family: var(--font-playfair), serif;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.header p {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 1.125rem;
+    color: rgba(34, 34, 34, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.marqueeContainer {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    display: flex;
+}
+
+/* Gradients for smooth fade in/out effect */
+.marqueeContainer::before,
+.marqueeContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marqueeContainer::before {
+    left: 0;
+    background: linear-gradient(to right, #F5F0E6 0%, rgba(245, 240, 230, 0) 100%);
+}
+
+.marqueeContainer::after {
+    right: 0;
+    background: linear-gradient(to left, #F5F0E6 0%, rgba(245, 240, 230, 0) 100%);
+}
+
+.marqueeTrack {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding: 0 40px;
+    width: max-content;
+    /* Animate half of the duplicated track width */
+    animation: scrollMarquee 15s linear infinite;
+}
+
+/* Ensure no visual jump */
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    cursor: pointer;
+}
+
+.logo:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .partnersSection {
+        padding: 50px 0;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .marqueeTrack {
+        gap: 50px;
+        padding: 0 25px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+}

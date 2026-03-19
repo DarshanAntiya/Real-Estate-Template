@@ -1,0 +1,153 @@
+.panelsSection {
+    padding: 80px 0;
+    background-color: transparent;
+}
+
+.panelsContainer {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    gap: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.panel {
+    position: relative;
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+.panel:hover {
+    flex: 3;
+}
+
+.panelImageBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.panelImageBg img {
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.panel:hover .panelImageBg img {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 2;
+    transition: opacity 0.6s ease;
+    opacity: 0.8;
+}
+
+.panel:hover .overlay {
+    opacity: 1;
+}
+
+.panelContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+.panelContentInner {
+    min-width: 300px;
+    /* Keeps text from wrapping weirdly when panel shrinks */
+}
+
+.panelTitle {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    white-space: nowrap;
+    /* Prevent wrap when shrunk */
+}
+
+.panelSubtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 12px;
+    opacity: 0;
+    max-width: 300px;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    white-space: normal;
+}
+
+.panel:hover .panelSubtitle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.panel:hover .panelTitle {
+    transform: translateY(-8px);
+}
+
+@media (max-width: 992px) {
+    .panelsContainer {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .panelsSection {
+        padding: 60px 0;
+    }
+
+    .panelsContainer {
+        flex-direction: column;
+        height: auto;
+        gap: 16px;
+    }
+
+    .panel {
+        height: 280px;
+        flex: none !important;
+    }
+
+    .overlay {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.1) 100%);
+        opacity: 1;
+    }
+
+    .panelSubtitle {
+        opacity: 1;
+        transform: translateY(0);
+        max-width: 100%;
+    }
+
+    .panelTitle {
+        transform: translateY(-8px);
+        white-space: normal;
+        /* Allow wrap on mobile if needed */
+    }
+
+    .panelContentInner {
+        min-width: 0;
+    }
+}

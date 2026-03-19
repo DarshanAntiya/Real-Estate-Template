@@ -1,0 +1,370 @@
+/* Property Detail Page Styles */
+
+.loadingPage {
+    padding: 200px 0 100px;
+    text-align: center;
+}
+
+.loadingPage h2 {
+    margin-bottom: 12px;
+}
+
+.loadingPage p {
+    margin-bottom: 24px;
+}
+
+.detailHero {
+    padding: 120px 0 24px;
+    background: var(--charcoal);
+}
+
+.backLink {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s;
+}
+
+.backLink:hover {
+    color: var(--text);
+}
+
+.detailBody {
+    padding: 40px 0 80px;
+}
+
+.detailGrid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Gallery */
+.gallery {
+    margin-bottom: 32px;
+}
+
+.mainImage {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--beige-light);
+    margin-bottom: 12px;
+}
+
+.mainImage img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.thumb {
+    flex: 0 0 80px;
+    height: 60px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    transition: border-color 0.2s;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbActive {
+    border-color: var(--charcoal);
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.lightboxClose {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.lightboxNav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.lightboxNav button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.lightboxNav button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lightboxNav span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+/* Info Block */
+.infoBlock {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+}
+
+.infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.infoHeader h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.infoLoc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.priceRow {
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.priceValue {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.priceNote {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.detailTags {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.detailTag {
+    background: var(--bg);
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+}
+
+.tagLabel {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.tagValue {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+}
+
+.descBlock,
+.amenitiesBlock,
+.mapBlock {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+}
+
+.descBlock h3,
+.amenitiesBlock h3,
+.mapBlock h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+.descBlock p {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.amenitiesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.amenity {
+    font-size: 14px;
+    color: var(--text-light);
+    padding: 8px 12px;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+}
+
+.mapEmbed {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+/* Inquiry Card */
+.inquiryCard {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 100px;
+}
+
+.inquiryCard h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+}
+
+.inquiryCard>p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.dividerOr {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.dividerOr::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border);
+}
+
+.dividerOr span {
+    background: var(--bg-card);
+    padding: 0 16px;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.waBtn {
+    width: 100%;
+    background: #25D366 !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.waBtn:hover {
+    background: #1da851 !important;
+}
+
+.successMsg {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.successIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(76, 175, 80, 0.12);
+    color: #2E7D32;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.successMsg h4 {
+    margin-bottom: 8px;
+}
+
+.successMsg p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .detailGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .inquiryCard {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainImage img {
+        height: 280px;
+    }
+
+    .infoHeader {
+        flex-direction: column;
+    }
+
+    .detailTags {
+        grid-template-columns: 1fr 1fr;
+    }
+}

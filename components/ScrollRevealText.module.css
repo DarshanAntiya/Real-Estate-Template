@@ -1,0 +1,51 @@
+.container {
+    height: 100vh;
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    margin-bottom: -35vh;
+    /* Force the featured section up aggressively */
+    z-index: 10;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 5%;
+    padding-bottom: 40vh;
+    /* Shifts the centered text upwards visually */
+}
+
+.textWrapper {
+    max-width: 900px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    line-height: 1.4;
+    font-weight: 300;
+    color: var(--charcoal);
+    /* Set up a stacking context for the liquid glass SVG filter to work on its children */
+    filter: url(#liquid-glass);
+    -webkit-filter: url(#liquid-glass);
+}
+
+.wordGroup {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.word,
+.char {
+    display: inline-block;
+    /* Make sure letters/words don't wrap internally or break strangely */
+}
+
+.space {
+    display: inline-block;
+    white-space: pre;
+}

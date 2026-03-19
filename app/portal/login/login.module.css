@@ -1,0 +1,47 @@
+.loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    padding: 20px;
+}
+
+.loginCard {
+    width: 100%;
+    max-width: 400px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.loginHeader {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.loginLogo {
+    height: 60px;
+    width: auto;
+    margin: 0 auto 16px;
+    display: block;
+    filter: brightness(0.15);
+    /* Charcoal for light bg */
+}
+
+.loginHeader p {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.error {
+    background: rgba(220, 38, 38, 0.08);
+    color: #DC2626;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    margin-bottom: 16px;
+}

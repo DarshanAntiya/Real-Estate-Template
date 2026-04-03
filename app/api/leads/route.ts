@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
 import { leadSchema, sanitizeInput, contactFormRateLimiter, getIpFromRequest } from "@/lib/security";
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 export async function POST(request: Request) {
     try {
@@ -29,9 +30,8 @@ export async function POST(request: Request) {
 
         const data = parseResult.data;
 
-        // Honeypot check
+        // Honeypot check — fake success for bots
         if (data.honeypot) {
-            // Fake success for bots
             return NextResponse.json({ success: true }, { status: 200 });
         }
 
@@ -42,23 +42,28 @@ export async function POST(request: Request) {
         const sanitizedMessage = data.message ? sanitizeInput(data.message) : null;
         const sanitizedSource = data.source ? sanitizeInput(data.source) : "inquiry";
 
-        const lead = await prisma.lead.create({
-            data: {
-                name: sanitizedName,
-                email: sanitizedEmail,
-                phone: sanitizedPhone,
-                message: sanitizedMessage,
-                propertyId: data.propertyId || null,
-                source: sanitizedSource,
-            },
-        });
+        // Save to Firebase Firestore
+        const leadData = {
+            name: sanitizedName,
+            email: sanitizedEmail,
+            phone: sanitizedPhone,
+            message: sanitizedMessage,
+            propertyId: data.propertyId || null,
+            source: sanitizedSource,
+            createdAt: new Date(),
+        };
 
-        return NextResponse.json({ lead }, { status: 201 });
+        const docRef = await addDoc(collection(db, "leads"), leadData);
+
+        return NextResponse.json(
+            { success: true, lead: { id: docRef.id, ...leadData } },
+            { status: 201 }
+        );
     } catch (error) {
         console.error("Error creating lead:", error);
         return NextResponse.json(
             { error: "Failed to submit inquiry" },
-            { status: 500 } // Generic error, no leak
+            { status: 500 }
         );
     }
 }

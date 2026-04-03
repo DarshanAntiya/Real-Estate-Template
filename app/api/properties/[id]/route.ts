@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { staticProperties } from "@/lib/data";
 
 export async function GET(
     request: Request,
@@ -7,9 +7,7 @@ export async function GET(
 ) {
     try {
         const { id } = await params;
-        const property = await prisma.property.findUnique({
-            where: { id },
-        });
+        const property = staticProperties.find((p) => p.id === id);
 
         if (!property) {
             return NextResponse.json(

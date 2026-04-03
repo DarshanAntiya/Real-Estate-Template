@@ -1,17 +1,10 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { staticLeads } from "@/lib/data";
 
 export async function GET() {
     try {
-        const leads = await prisma.lead.findMany({
-            orderBy: { createdAt: "desc" },
-            include: {
-                property: {
-                    select: { name: true, location: true },
-                },
-            },
-        });
-        return NextResponse.json({ leads });
+        // Return static leads (empty for now)
+        return NextResponse.json({ leads: staticLeads });
     } catch (error) {
         console.error("Error:", error);
         return NextResponse.json(

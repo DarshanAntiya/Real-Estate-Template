@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { staticProperties } from "@/lib/data";
 import { createPropertySchema, sanitizeInput } from "@/lib/security";
 
 export async function GET() {
     try {
-        const properties = await prisma.property.findMany({
-            orderBy: { createdAt: "desc" },
-        });
+        // Return static properties, sorted by ID (mocking desc order)
+        const properties = [...staticProperties].reverse();
         return NextResponse.json({ properties });
     } catch (error) {
         console.error("Error fetching properties:", error);
@@ -32,28 +31,30 @@ export async function POST(request: Request) {
 
         const data = parseResult.data;
 
-        const property = await prisma.property.create({
-            data: {
-                name: sanitizeInput(data.name),
-                location: sanitizeInput(data.location),
-                area: data.area ? sanitizeInput(data.area) : null,
-                bhk: data.bhk ? sanitizeInput(data.bhk) : null,
-                propertyType: data.propertyType ? sanitizeInput(data.propertyType) : "Residential",
-                price: data.price || null,
-                startingFrom: data.startingFrom || false,
-                confidentialPrice: data.confidentialPrice || false,
-                status: data.status ? sanitizeInput(data.status) : "Available",
-                listingType: data.listingType ? sanitizeInput(data.listingType) : "Sale",
-                featured: data.featured || false,
-                active: data.active !== false,
-                // amenities, mapEmbedUrl, and images might contain structural or external data
-                // Basic sanitization on string inputs:
-                amenities: Array.isArray(body.amenities) ? body.amenities.map((a: string) => sanitizeInput(a)) : [],
-                mapEmbedUrl: data.mapEmbedUrl || null,
-                images: Array.isArray(body.images) ? body.images : [], // Validate object structure if needed later
-                description: data.description ? sanitizeInput(data.description) : null,
-            },
-        });
+        // Mock property creation
+        const property = {
+            id: "cl-" + Math.random().toString(36).substr(2, 9),
+            name: sanitizeInput(data.name),
+            location: sanitizeInput(data.location),
+            area: data.area ? sanitizeInput(data.area) : null,
+            bhk: data.bhk ? sanitizeInput(data.bhk) : null,
+            propertyType: data.propertyType ? sanitizeInput(data.propertyType) : "Residential",
+            price: data.price || null,
+            startingFrom: data.startingFrom || false,
+            confidentialPrice: data.confidentialPrice || false,
+            status: data.status ? sanitizeInput(data.status) : "Available",
+            listingType: data.listingType ? sanitizeInput(data.listingType) : "Sale",
+            featured: data.featured || false,
+            active: data.active !== false,
+            amenities: Array.isArray(body.amenities) ? body.amenities.map((a: string) => sanitizeInput(a)) : [],
+            mapEmbedUrl: data.mapEmbedUrl || null,
+            images: Array.isArray(body.images) ? body.images : [],
+            description: data.description ? sanitizeInput(data.description) : null,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+        };
+
+        console.log("Mock property created:", property);
 
         return NextResponse.json({ property }, { status: 201 });
     } catch (error) {

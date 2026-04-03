@@ -81,39 +81,6 @@ const testimonials = [
   },
 ];
 
-/* ——— Why Choose Us Pillars ——— */
-const pillars = [
-  {
-    icon: "📊",
-    title: "Proven Market Experience",
-    desc: "100+ successful closings across Mumbai's luxury residential and commercial market.",
-  },
-  {
-    icon: "🛡️",
-    title: "Regulatory Transparency",
-    desc: "Fully RERA registered. Every transaction is compliant, documented, and secure.",
-  },
-  {
-    icon: "🤝",
-    title: "Strategic Negotiation",
-    desc: "We position our clients for the best possible outcomes through deep market intelligence.",
-  },
-  {
-    icon: "🔒",
-    title: "Discreet Representation",
-    desc: "Your privacy is paramount. We operate with the utmost confidentiality at every stage.",
-  },
-  {
-    icon: "📋",
-    title: "End-to-End Support",
-    desc: "From property identification to registration — comprehensive transaction management.",
-  },
-  {
-    icon: "✨",
-    title: "Personalized Advisory",
-    desc: "Every client receives a strategy tailored to their specific goals and timeline.",
-  },
-];
 
 // Animation variants for staggered grid items
 const containerVariants: Variants = {
@@ -489,32 +456,6 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ===== WHY CHOOSE US ===== */}
-          <section className={`section ${styles.whySection}`}>
-            <div className="container">
-              <div className="section-header reveal">
-                <span className="section-label">Why RIZ-WEE & CO.</span>
-                <h2>A Standard Beyond Transactions</h2>
-                <p>
-                  Six pillars that define the RIZ-WEE & CO. experience.
-                </p>
-              </div>
-
-              <div className={styles.pillarsGrid}>
-                {pillars.map((pillar, i) => (
-                  <div
-                    key={pillar.title}
-                    className={`${styles.pillarCard} reveal reveal-delay-${(i % 3) + 1
-                      }`}
-                  >
-                    <span className={styles.pillarIcon}>{pillar.icon}</span>
-                    <h4 className={styles.pillarTitle}>{pillar.title}</h4>
-                    <p className={styles.pillarDesc}>{pillar.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
 
           {/* ===== TESTIMONIALS ===== */}
           <section className={`section ${styles.testimonialSection}`}>
